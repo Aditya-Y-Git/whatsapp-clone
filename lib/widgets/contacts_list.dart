@@ -22,6 +22,7 @@ class ContactsList extends StatelessWidget {
                   style: const TextStyle(fontSize: 18),
                 ),
                 subtitle: Text(
+                  overflow: TextOverflow.ellipsis,
                   info[index]['message'].toString(),
                   style: const TextStyle(fontSize: 15),
                 ),
