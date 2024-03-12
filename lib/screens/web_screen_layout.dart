@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:whatsapp_clone/colors.dart';
+import 'package:whatsapp_clone/widgets/chat_list.dart';
 import 'package:whatsapp_clone/widgets/contacts_list.dart';
 import 'package:whatsapp_clone/widgets/web_chat_appbar.dart';
 import 'package:whatsapp_clone/widgets/web_profile_bar.dart';
@@ -38,15 +40,20 @@ class WebScreenLayout extends StatelessWidget {
           child: Column(
             children: [
               const WebChatAppBar(),
-              const Spacer(),
+              const Expanded(child: ChatList()),
               Container(
                 height: MediaQuery.of(context).size.height * 0.08,
+                padding: const EdgeInsets.all(10),
                 decoration: const BoxDecoration(
-                  color: dividerColor,
+                  color: chatBarMessage,
+                  border: Border(
+                    bottom: BorderSide(
+                      color: dividerColor,
+                    ),
+                  ),
                 ),
                 child: Row(
                   children: [
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.01),
                     IconButton(
                       onPressed: () {},
                       icon: const Icon(
@@ -61,13 +68,24 @@ class WebScreenLayout extends StatelessWidget {
                         color: Colors.grey,
                       ),
                     ),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.55,
-                      margin: EdgeInsets.all(
-                          MediaQuery.of(context).size.width * 0.008),
-                      decoration: const BoxDecoration(
-                        color: chatBarMessage,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 15),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            fillColor: searchBarColor,
+                            filled: true,
+                            hintText: 'Type a message',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              ),
+                            ),
+                            contentPadding: const EdgeInsets.only(left: 20),
+                          ),
+                        ),
                       ),
                     ),
                     IconButton(
@@ -77,7 +95,6 @@ class WebScreenLayout extends StatelessWidget {
                         color: Colors.grey,
                       ),
                     ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.01),
                   ],
                 ),
               ),
