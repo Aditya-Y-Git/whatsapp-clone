@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'WhatsApp Clone',
       theme: ThemeData.dark().copyWith(
-        colorScheme: const ColorScheme.dark(background: backgroundColor),
+        scaffoldBackgroundColor: backgroundColor,
       ),
       home: const ResponsiveLayout(
         mobileScreenLayout: MobileScreenLayout(),
