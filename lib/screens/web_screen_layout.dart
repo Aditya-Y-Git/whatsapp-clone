@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/colors.dart';
 import 'package:whatsapp_clone/widgets/contacts_list.dart';
+import 'package:whatsapp_clone/widgets/web_chat_appbar.dart';
 import 'package:whatsapp_clone/widgets/web_profile_bar.dart';
+import 'package:whatsapp_clone/widgets/web_search_bar.dart';
 
 class WebScreenLayout extends StatelessWidget {
   const WebScreenLayout({super.key});
@@ -17,6 +19,7 @@ class WebScreenLayout extends StatelessWidget {
             child: Column(
               children: [
                 WebProfileBar(),
+                WebSearchBar(),
                 ContactsList(),
               ],
             ),
@@ -33,8 +36,9 @@ class WebScreenLayout extends StatelessWidget {
             ),
           ),
           child: Column(
-            verticalDirection: VerticalDirection.up,
             children: [
+              const WebChatAppBar(),
+              const Spacer(),
               Container(
                 height: MediaQuery.of(context).size.height * 0.08,
                 decoration: const BoxDecoration(
