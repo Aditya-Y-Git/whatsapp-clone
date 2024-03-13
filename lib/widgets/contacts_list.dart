@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/info.dart';
+import 'package:whatsapp_clone/screens/mobile_chat_screen.dart';
 
 class ContactsList extends StatelessWidget {
   const ContactsList({super.key});
@@ -13,7 +14,16 @@ class ContactsList extends StatelessWidget {
         itemCount: info.length,
         itemBuilder: (context, index) {
           return InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MobileChatScreen(
+                    name: info[index]['name'].toString(),
+                    imageUrl: info[index]['profilePic'].toString(),
+                  ),
+                ),
+              );
+            },
             child: Padding(
               padding: const EdgeInsets.only(bottom: 5),
               child: ListTile(
