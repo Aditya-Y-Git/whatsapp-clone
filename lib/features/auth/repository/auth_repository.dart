@@ -105,12 +105,13 @@ class AuthRepository {
       }
 
       var user = UserModel(
-          name: name,
-          uid: uid,
-          profilePic: photoUrl,
-          isOnline: true,
-          phoneNumber: uid,
-          groupId: []);
+        name: name,
+        uid: uid,
+        profilePic: photoUrl,
+        isOnline: true,
+        phoneNumber: auth.currentUser!.phoneNumber.toString(),
+        groupId: [],
+      );
 
       await firestore.collection('users').doc(uid).set(user.toJson());
 
